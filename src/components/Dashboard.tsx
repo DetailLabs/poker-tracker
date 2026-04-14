@@ -40,7 +40,7 @@ export function Dashboard({
             >
               {leader.name}
             </button>
-            <p className="mono text-2xl font-bold mt-1" style={{ color: 'var(--positive)' }}>
+            <p className="mono text-2xl font-extrabold tracking-tight mt-1" style={{ color: 'var(--positive)' }}>
               {formatMoney(leader.totalWinnings)}
             </p>
             <p className="text-[13px] mt-2" style={{ color: 'var(--text-muted)' }}>
@@ -153,7 +153,7 @@ function StatCell({ label, value, sub, positive }: { label: string; value: strin
   return (
     <div className="p-7" style={{ background: 'var(--bg)' }}>
       <p className="label-upper mb-2">{label}</p>
-      <p className="text-4xl font-extrabold tracking-tighter" style={{ color: positive ? 'var(--positive)' : 'var(--text)' }}>{value}</p>
+      <p className="mono text-4xl font-extrabold tracking-tight" style={{ color: positive ? 'var(--positive)' : 'var(--text)' }}>{value}</p>
       {sub && <p className="text-[13px] mt-1" style={{ color: 'var(--text-muted)' }}>{sub}</p>}
     </div>
   )

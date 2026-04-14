@@ -32,6 +32,11 @@ export interface PlayerStats {
   losingGames: number
 }
 
+export interface DateRange {
+  from: string
+  to: string
+}
+
 export type Page =
   | { type: 'dashboard' }
   | { type: 'leaderboard' }
