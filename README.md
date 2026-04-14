@@ -83,7 +83,7 @@ Inspired by [Linear](https://linear.app) and [Vercel](https://vercel.com) — mi
 ### Install & Run
 
 ```bash
-git clone https://github.com/razeebmahmood/poker-tracker.git
+git clone https://github.com/DetailLabs/poker-tracker.git
 cd poker-tracker
 npm install
 npm run dev
@@ -107,9 +107,7 @@ The app has two modes:
 | **Viewer** (default) | Dashboard, Leaderboard, Games (read-only), Charts, Player Profiles |
 | **Admin** | Everything above + Add Game, Manage Players, Delete Games |
 
-To unlock admin mode, click the lock icon in the top-right corner and enter the password.
-
-**Default password:** `poker2025`
+> **Want to try admin mode?** Click the lock icon (top-right) and enter: `poker2025`
 
 To change the password, edit `ADMIN_HASH` in `src/contexts/AdminContext.tsx`.
 
