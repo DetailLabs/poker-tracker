@@ -12,12 +12,9 @@ import { AddGame } from './components/AddGame'
 import { Charts } from './components/Charts'
 import { ManagePlayers } from './components/ManagePlayers'
 import initialData from './data/games.json'
-import { useSwipeable } from 'react-swipeable'
 
 const STORAGE_KEY = 'poker-tracker-extra-games'
 const PLAYERS_KEY = 'poker-tracker-players'
-
-const PAGE_ORDER: Page['type'][] = ['dashboard', 'leaderboard', 'history', 'charts']
 
 function loadData(): GameData {
   const base = initialData as unknown as GameData
@@ -95,24 +92,6 @@ function AppContent() {
     setData(prev => ({ ...prev, players }))
   }
 
-  // Swipe navigation
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      const currentIdx = PAGE_ORDER.indexOf(page.type)
-      if (currentIdx >= 0 && currentIdx < PAGE_ORDER.length - 1) {
-        setPage({ type: PAGE_ORDER[currentIdx + 1] } as Page)
-      }
-    },
-    onSwipedRight: () => {
-      const currentIdx = PAGE_ORDER.indexOf(page.type)
-      if (currentIdx > 0) {
-        setPage({ type: PAGE_ORDER[currentIdx - 1] } as Page)
-      }
-    },
-    trackMouse: false,
-    delta: 50,
-  })
-
   const showDateFilter = ['dashboard', 'leaderboard', 'history', 'charts', 'player'].includes(page.type)
 
   function renderPage() {
@@ -134,25 +113,13 @@ function AppContent() {
     }
   }
 
-  const pageIdx = PAGE_ORDER.indexOf(page.type)
-
   return (
     <Layout
       page={page}
       onNavigate={setPage}
       headerExtra={showDateFilter ? <DateRangeFilter range={dateRange} onChange={setDateRange} years={years} /> : undefined}
     >
-      <div {...swipeHandlers}>
-        {renderPage()}
-      </div>
-      {/* Mobile dot indicators */}
-      {pageIdx >= 0 && (
-        <div className="flex justify-center gap-1.5 py-4 sm:hidden">
-          {PAGE_ORDER.map((t, i) => (
-            <div key={t} className={`dot-indicator ${i === pageIdx ? 'active' : ''}`} />
-          ))}
-        </div>
-      )}
+      {renderPage()}
     </Layout>
   )
 }

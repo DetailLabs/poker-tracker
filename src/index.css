@@ -22,6 +22,7 @@ html {
   --btn-primary-bg: #fafafa;
   --btn-primary-text: #09090b;
   --input-bg: #18181b;
+  --float-nav-bg: rgba(24,24,27,0.82);
 }
 
 [data-theme="light"] {
@@ -42,6 +43,7 @@ html {
   --btn-primary-bg: #18181b;
   --btn-primary-text: #fafafa;
   --input-bg: #f4f4f5;
+  --float-nav-bg: rgba(255,255,255,0.82);
 }
 
 body {

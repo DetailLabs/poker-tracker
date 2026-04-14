@@ -1,5 +1,5 @@
 import type { Game, Page, PlayerInfo } from '../types'
-import { formatMoney, moneyClass, getAllPlayerStats, formatDate, getPlayerColor } from '../utils/stats'
+import { formatMoney, moneyClass, getAllPlayerStats, formatDate } from '../utils/stats'
 import { Crown } from 'lucide-react'
 
 export function Dashboard({
@@ -52,31 +52,6 @@ export function Dashboard({
         <StatCell label="Active Players" value={String(stats.length)} sub="across all sessions" />
         <StatCell label="Biggest Win" value={`$${biggestSingleWin.value}`} sub={biggestSingleWin.name} positive />
         <StatCell label="Best Streak" value={`${longestStreak.value}`} sub={longestStreak.name} />
-      </div>
-
-      {/* Player Carousel (mobile) */}
-      <div className="sm:hidden">
-        <p className="label-upper mb-3">Top Players</p>
-        <div className="flex gap-3 overflow-x-auto snap-x hide-scrollbar pb-2">
-          {stats.slice(0, 8).map((s, i) => (
-            <button
-              key={s.name}
-              onClick={() => onNavigate({ type: 'player', name: s.name })}
-              className="shrink-0 w-[140px] rounded-xl p-4 snap-start cursor-pointer"
-              style={{ border: '1px solid var(--border)' }}
-            >
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-[13px] font-bold text-white mb-2"
-                style={{ background: getPlayerColor(s.name, players) }}>
-                {s.name[0]}
-              </div>
-              <p className="text-[13px] font-semibold" style={{ color: 'var(--text)' }}>{s.name}</p>
-              <p className={`mono text-[12px] font-medium ${moneyClass(s.totalWinnings)}`}>
-                {formatMoney(s.totalWinnings)}
-              </p>
-              <p className="text-[11px] mt-1" style={{ color: 'var(--text-muted)' }}>#{i + 1} &middot; {s.gamesPlayed}g</p>
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">

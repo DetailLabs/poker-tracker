@@ -34,43 +34,46 @@ export function Layout({
 
   const tabs = isAdmin ? [...viewerTabs, ...adminTabs] : viewerTabs
 
+  function isTabActive(t: Page['type']) {
+    return page.type === t || (t === 'leaderboard' && page.type === 'player')
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-50" style={{ borderBottom: '1px solid var(--border)', background: 'var(--bg)' }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-5 py-3 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+        <div className="max-w-6xl mx-auto px-4 sm:px-5 py-3 flex sm:grid sm:grid-cols-[1fr_auto_1fr] items-center gap-2">
           <button
             onClick={() => onNavigate({ type: 'dashboard' })}
-            className="flex items-center gap-2.5 cursor-pointer shrink-0 justify-self-start"
+            className="flex items-center gap-2.5 cursor-pointer shrink-0 flex-1 sm:flex-initial justify-self-start"
           >
             <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[16px]"
               style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
               <span style={{ color: 'var(--text)' }}>&#9824;</span>
             </div>
-            <span className="text-[15px] font-semibold tracking-tight hidden sm:inline" style={{ color: 'var(--text)' }}>Poker Tracker</span>
+            <span className="text-[15px] font-semibold tracking-tight" style={{ color: 'var(--text)' }}>Poker Tracker</span>
           </button>
 
-          <nav className="flex p-[3px] rounded-[10px]" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
+          {/* Desktop tab bar */}
+          <nav className="hidden sm:flex p-[3px] rounded-[10px]" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
             {tabs.map(t => {
-              const Icon = t.icon
-              const isActive = page.type === t.type || (t.type === 'leaderboard' && page.type === 'player')
+              const isActive = isTabActive(t.type)
               return (
                 <button
                   key={t.type}
                   onClick={() => onNavigate({ type: t.type } as Page)}
-                  className={`flex items-center gap-1.5 px-2.5 sm:px-3.5 py-[7px] rounded-[7px] text-[13px] font-medium transition-colors cursor-pointer`}
+                  className="flex items-center gap-1.5 px-3.5 py-[7px] rounded-[7px] text-[13px] font-medium transition-colors cursor-pointer"
                   style={{
                     color: isActive ? 'var(--text)' : 'var(--text-secondary)',
                     background: isActive ? 'var(--nav-active)' : undefined,
                   }}
                 >
-                  <Icon size={14} className="sm:hidden" />
-                  <span className="hidden sm:inline">{t.label}</span>
+                  <span>{t.label}</span>
                 </button>
               )
             })}
           </nav>
 
-          <div className="flex items-center gap-1 shrink-0 justify-self-end">
+          <div className="flex items-center gap-1 shrink-0 sm:justify-self-end">
             {headerExtra}
             <button onClick={toggleTheme} className="p-2 rounded-lg cursor-pointer hover:opacity-70 transition-opacity" style={{ color: 'var(--text-secondary)' }}>
               {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
@@ -86,9 +89,46 @@ export function Layout({
           </div>
         </div>
       </header>
-      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-5 py-6 sm:py-8 animate-in">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-5 py-6 sm:py-8 pb-24 sm:pb-8 animate-in">
         {children}
       </main>
+
+      {/* Mobile floating pill nav */}
+      <nav
+        className="sm:hidden fixed left-1/2 z-50 flex items-center gap-0.5 p-1.5 rounded-full"
+        style={{
+          bottom: 'calc(env(safe-area-inset-bottom, 0px) + 14px)',
+          transform: 'translateX(-50%)',
+          background: 'var(--float-nav-bg)',
+          border: '1px solid var(--border)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.04)',
+        }}
+      >
+        {tabs.map(t => {
+          const Icon = t.icon
+          const isActive = isTabActive(t.type)
+          return (
+            <button
+              key={t.type}
+              onClick={() => onNavigate({ type: t.type } as Page)}
+              className="flex items-center justify-center cursor-pointer transition-colors rounded-full"
+              aria-label={t.label}
+              title={t.label}
+              style={{
+                width: 44,
+                height: 32,
+                color: isActive ? 'var(--text)' : 'var(--text-muted)',
+                background: isActive ? 'var(--nav-active)' : 'transparent',
+              }}
+            >
+              <Icon size={16} />
+            </button>
+          )
+        })}
+      </nav>
+
       {showLogin && <AdminLogin onClose={() => setShowLogin(false)} />}
     </div>
   )
