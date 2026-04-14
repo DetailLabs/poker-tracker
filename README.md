@@ -2,11 +2,6 @@
 
 A modern poker game score tracking app for home games. Track results, view player stats, analyze trends with charts, and manage your poker group — all in a clean, responsive UI.
 
-![Dark Mode](https://img.shields.io/badge/theme-dark%20%2F%20light-blue)
-![React](https://img.shields.io/badge/react-18-61dafb)
-![TypeScript](https://img.shields.io/badge/typescript-5-3178c6)
-![Vite](https://img.shields.io/badge/vite-8-646cff)
-
 ## Features
 
 ### Dashboard
