@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import type { Game, Page, PlayerInfo } from '../types'
 import { formatMoney, formatDate, moneyClass } from '../utils/stats'
 import { useAdmin } from '../contexts/AdminContext'
+import { PlayerMultiSelect } from './PlayerMultiSelect'
 import { Crown, ChevronDown, ChevronUp, MapPin, Trash2 } from 'lucide-react'
 
 export function GameHistory({
@@ -11,22 +12,42 @@ export function GameHistory({
 }) {
   const { isAdmin } = useAdmin()
   const [expandedId, setExpandedId] = useState<number | null>(null)
-  const [filterPlayer, setFilterPlayer] = useState('')
+
+  // Players ordered by game count (most common first) — matches Charts default
+  const playersByFrequency = useMemo(() => {
+    const counts: Record<string, number> = {}
+    for (const g of games) for (const p of Object.keys(g.results)) counts[p] = (counts[p] || 0) + 1
+    return Object.entries(counts).sort(([, a], [, b]) => b - a).map(([n]) => n)
+  }, [games])
+
+  const [selectedPlayers, setSelectedPlayers] = useState<Set<string>>(() => new Set(playersByFrequency))
+
+  // Keep selection in sync when filtered range changes
+  useEffect(() => {
+    const valid = new Set(playersByFrequency)
+    setSelectedPlayers(prev => {
+      const next = new Set(Array.from(prev).filter(p => valid.has(p)))
+      if (next.size === 0) playersByFrequency.forEach(p => next.add(p))
+      return next
+    })
+  }, [playersByFrequency])
 
   const sorted = [...games].sort((a, b) => b.date.localeCompare(a.date))
-  const filtered = filterPlayer ? sorted.filter(g => filterPlayer in g.results) : sorted
-  const activePlayers = players.filter(p => games.some(g => p.name in g.results)).map(p => p.name).sort()
+  const allSelected = selectedPlayers.size === playersByFrequency.length
+  const filtered = allSelected
+    ? sorted
+    : sorted.filter(g => Object.keys(g.results).some(p => selectedPlayers.has(p)))
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
         <h2 className="text-2xl font-extrabold tracking-tighter">Game History</h2>
-        <select value={filterPlayer} onChange={e => setFilterPlayer(e.target.value)}
-          className="text-[13px] font-medium px-3 py-1.5 rounded-lg cursor-pointer"
-          style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>
-          <option value="">All Players</option>
-          {activePlayers.map(p => <option key={p} value={p}>{p}</option>)}
-        </select>
+        <PlayerMultiSelect
+          allPlayers={playersByFrequency}
+          selected={selectedPlayers}
+          onChange={setSelectedPlayers}
+          players={players}
+        />
       </div>
 
       <div className="space-y-2">
