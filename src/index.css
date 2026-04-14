@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root, [data-theme="dark"] {
+  --bg: #09090b;
+  --surface: #18181b;
+  --border: #27272a;
+  --border-subtle: rgba(39,39,42,0.5);
+  --text: #fafafa;
+  --text-secondary: #71717a;
+  --text-muted: #52525b;
+  --positive: #4ade80;
+  --negative: #f87171;
+  --gold: #eab308;
+  --gold-bg: rgba(234,179,8,0.1);
+  --hover: rgba(255,255,255,0.02);
+  --surface-gradient: linear-gradient(160deg, #18181b, #09090b);
+  --nav-active: #27272a;
+  --btn-primary-bg: #fafafa;
+  --btn-primary-text: #09090b;
+  --input-bg: #18181b;
+}
+
+[data-theme="light"] {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e4e4e7;
+  --border-subtle: #f4f4f5;
+  --text: #18181b;
+  --text-secondary: #71717a;
+  --text-muted: #a1a1aa;
+  --positive: #16a34a;
+  --negative: #dc2626;
+  --gold: #ca8a04;
+  --gold-bg: rgba(202,138,4,0.1);
+  --hover: rgba(0,0,0,0.02);
+  --surface-gradient: linear-gradient(160deg, #ffffff, #f4f4f5);
+  --nav-active: #e4e4e7;
+  --btn-primary-bg: #18181b;
+  --btn-primary-text: #fafafa;
+  --input-bg: #f4f4f5;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+  margin: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+#root { min-height: 100vh; }
+
+.positive { color: var(--positive); }
+.negative { color: var(--negative); }
+.gold { color: var(--gold); }
+.mono { font-family: 'JetBrains Mono', monospace; }
+.label-upper {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--text-muted);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeIn 0.2s ease-out; }
+
+/* Scroll snap for carousels */
+.snap-x { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.snap-center { scroll-snap-align: center; }
+.snap-start { scroll-snap-align: start; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Mobile dot indicators */
+.dot-indicator {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--text-muted); transition: all 0.2s;
+}
+.dot-indicator.active {
+  width: 18px; border-radius: 3px; background: var(--text);
+}

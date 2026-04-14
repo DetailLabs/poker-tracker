@@ -1,0 +1,643 @@
+{
+  "players": [
+    {
+      "name": "Kevin",
+      "color": "#F97316",
+      "active": true
+    },
+    {
+      "name": "Derek",
+      "color": "#8B5CF6",
+      "active": true
+    },
+    {
+      "name": "Ryan",
+      "color": "#3B82F6",
+      "active": true
+    },
+    {
+      "name": "Sarah",
+      "color": "#EC4899",
+      "active": true
+    },
+    {
+      "name": "Lily",
+      "color": "#D946EF",
+      "active": true
+    },
+    {
+      "name": "Tyler",
+      "color": "#06B6D4",
+      "active": true
+    },
+    {
+      "name": "Priya",
+      "color": "#EF4444",
+      "active": true
+    },
+    {
+      "name": "Lucas",
+      "color": "#A78BFA",
+      "active": true
+    },
+    {
+      "name": "James",
+      "color": "#10B981",
+      "active": true
+    },
+    {
+      "name": "Daniel",
+      "color": "#FB923C",
+      "active": true
+    },
+    {
+      "name": "Ethan",
+      "color": "#84CC16",
+      "active": true
+    },
+    {
+      "name": "Jordan",
+      "color": "#14B8A6",
+      "active": true
+    },
+    {
+      "name": "Marcus",
+      "color": "#F59E0B",
+      "active": true
+    },
+    {
+      "name": "Megan",
+      "color": "#F43F5E",
+      "active": true
+    },
+    {
+      "name": "Nathan",
+      "color": "#6366F1",
+      "active": true
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "date": "2025-01-04",
+      "results": {
+        "Ryan": 106.0,
+        "Sarah": -53.0,
+        "Daniel": -27.5,
+        "Ethan": 223.0,
+        "Jordan": 13.0,
+        "Marcus": -300.0,
+        "Nathan": 5.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Ethan"
+    },
+    {
+      "id": 2,
+      "date": "2025-01-10",
+      "results": {
+        "Ryan": 80.0,
+        "Sarah": -15.5,
+        "Lucas": 35.0,
+        "James": 125.0,
+        "Daniel": 180.0,
+        "Ethan": 79.0,
+        "Jordan": 34.0,
+        "Marcus": -167.5,
+        "Megan": -40.0,
+        "Nathan": -250.0
+      },
+      "location": "Daniel's",
+      "notes": "",
+      "king": "Daniel"
+    },
+    {
+      "id": 3,
+      "date": "2025-01-17",
+      "results": {
+        "Sarah": -125.0,
+        "James": 155.0,
+        "Daniel": -127.0,
+        "Ethan": -112.5,
+        "Jordan": 110.0,
+        "Marcus": -2.0,
+        "Megan": 51.5,
+        "Nathan": 50.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "James"
+    },
+    {
+      "id": 4,
+      "date": "2025-01-31",
+      "results": {
+        "Ryan": -180.0,
+        "Lucas": -80.0,
+        "James": 118.0,
+        "Daniel": -240.0,
+        "Ethan": 15.0,
+        "Jordan": 250.0,
+        "Marcus": 117.0
+      },
+      "location": "Daniel's",
+      "notes": "",
+      "king": "Jordan"
+    },
+    {
+      "id": 5,
+      "date": "2025-02-09",
+      "results": {
+        "Ryan": 0.0,
+        "Lucas": -80.0,
+        "James": 155.0,
+        "Daniel": -98.0,
+        "Ethan": 28.0,
+        "Jordan": -160.0,
+        "Marcus": 104.0,
+        "Megan": 51.0
+      },
+      "location": "Daniel's",
+      "notes": "",
+      "king": "James"
+    },
+    {
+      "id": 6,
+      "date": "2025-02-22",
+      "results": {
+        "Ryan": 400.0,
+        "Lucas": -3.0,
+        "James": 190.0,
+        "Daniel": -130.0,
+        "Ethan": -350.0,
+        "Jordan": -150.0,
+        "Marcus": 43.0
+      },
+      "location": "Midtown",
+      "notes": "",
+      "king": "Ryan"
+    },
+    {
+      "id": 7,
+      "date": "2025-04-04",
+      "results": {
+        "Ryan": -400.0,
+        "Sarah": -30.0,
+        "Lucas": -120.0,
+        "James": 50.0,
+        "Daniel": 127.0,
+        "Marcus": 86.0,
+        "Nathan": 287.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Nathan"
+    },
+    {
+      "id": 8,
+      "date": "2025-04-12",
+      "results": {
+        "Ryan": -183.5,
+        "Sarah": -12.0,
+        "Lucas": -80.0,
+        "James": 330.0,
+        "Daniel": -222.0,
+        "Marcus": 212.0,
+        "Megan": -120.0,
+        "Nathan": 75.5
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "James"
+    },
+    {
+      "id": 9,
+      "date": "2025-04-19",
+      "results": {
+        "Ryan": 13.5,
+        "Sarah": 163.5,
+        "James": 232.0,
+        "Daniel": -188.0,
+        "Ethan": -200.0,
+        "Marcus": 138.0,
+        "Megan": -40.0,
+        "Nathan": -119.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "James"
+    },
+    {
+      "id": 10,
+      "date": "2025-04-26",
+      "results": {
+        "Ryan": -10.0,
+        "Lucas": -100.0,
+        "Daniel": -30.0,
+        "Jordan": -80.0,
+        "Marcus": 150.0,
+        "Nathan": -120.0,
+        "Tyler": 190.0
+      },
+      "location": "Ryan's",
+      "notes": "",
+      "king": "Guest"
+    },
+    {
+      "id": 11,
+      "date": "2025-05-09",
+      "results": {
+        "Sarah": 110.0,
+        "James": 58.0,
+        "Daniel": -164.0,
+        "Jordan": 121.0,
+        "Marcus": 70.0,
+        "Megan": -80.0,
+        "Nathan": -115.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Jordan"
+    },
+    {
+      "id": 12,
+      "date": "2025-05-17",
+      "results": {
+        "Sarah": 103.0,
+        "James": 20.0,
+        "Daniel": -145.0,
+        "Jordan": -76.0,
+        "Marcus": 13.5,
+        "Megan": 74.5,
+        "Nathan": 10.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Sarah"
+    },
+    {
+      "id": 13,
+      "date": "2025-05-24",
+      "results": {
+        "Sarah": -96.0,
+        "James": 133.0,
+        "Ethan": 30.0,
+        "Jordan": -240.0,
+        "Marcus": 167.5,
+        "Megan": -80.0,
+        "Nathan": 85.5
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 14,
+      "date": "2025-05-31",
+      "results": {
+        "Sarah": 74.0,
+        "James": 217.0,
+        "Daniel": -171.0,
+        "Jordan": 0.0,
+        "Marcus": 20.0,
+        "Nathan": -140.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "James"
+    },
+    {
+      "id": 15,
+      "date": "2025-06-07",
+      "results": {
+        "Sarah": 45.0,
+        "James": 44.5,
+        "Daniel": -80.0,
+        "Jordan": 0.0,
+        "Marcus": 224.0,
+        "Megan": -80.0,
+        "Nathan": -153.5
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 16,
+      "date": "2025-06-13",
+      "results": {
+        "Sarah": 189.0,
+        "James": 95.0,
+        "Ethan": -140.0,
+        "Jordan": -25.0,
+        "Marcus": 289.5,
+        "Nathan": -248.5,
+        "Guest": -160.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 17,
+      "date": "2025-06-21",
+      "results": {
+        "Sarah": 101.5,
+        "James": 0.0,
+        "Daniel": -96.5,
+        "Ethan": -80.0,
+        "Jordan": 150.0,
+        "Megan": -80.0,
+        "Nathan": 93.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Jordan"
+    },
+    {
+      "id": 18,
+      "date": "2025-06-27",
+      "results": {
+        "Sarah": -10.0,
+        "James": -147.0,
+        "Daniel": -110.0,
+        "Ethan": 155.0,
+        "Jordan": -20.0,
+        "Marcus": 82.0,
+        "Nathan": 50.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Ethan"
+    },
+    {
+      "id": 19,
+      "date": "2025-07-03",
+      "results": {
+        "Sarah": -115.0,
+        "James": -118.0,
+        "Daniel": -238.0,
+        "Ethan": 15.0,
+        "Jordan": -65.0,
+        "Marcus": 382.0,
+        "Megan": -40.0,
+        "Nathan": 180.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 20,
+      "date": "2025-07-05",
+      "results": {
+        "Ryan": -55.0,
+        "Sarah": -122.5,
+        "James": 93.5,
+        "Daniel": -38.0,
+        "Jordan": 50.0,
+        "Marcus": 199.0,
+        "Nathan": -126.5
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 21,
+      "date": "2025-08-02",
+      "results": {
+        "Sarah": 105.0,
+        "Daniel": -17.5,
+        "Ethan": -95.0,
+        "Jordan": -282.0,
+        "Marcus": 78.0,
+        "Nathan": 211.5
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Nathan"
+    },
+    {
+      "id": 22,
+      "date": "2025-08-16",
+      "results": {
+        "Sarah": 15.0,
+        "James": 20.0,
+        "Daniel": -60.0,
+        "Ethan": -300.0,
+        "Jordan": 150.0,
+        "Marcus": 295.0,
+        "Megan": -80.0,
+        "Nathan": -40.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 23,
+      "date": "2025-08-22",
+      "results": {
+        "Sarah": -144.0,
+        "James": 67.0,
+        "Daniel": 20.0,
+        "Jordan": -50.5,
+        "Marcus": 295.0,
+        "Nathan": -187.5
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 24,
+      "date": "2025-08-23",
+      "results": {
+        "Sarah": -123.5,
+        "James": 15.0,
+        "Daniel": 37.0,
+        "Jordan": -127.5,
+        "Marcus": 148.0,
+        "Nathan": 51.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 25,
+      "date": "2025-08-29",
+      "results": {
+        "Sarah": 154.0,
+        "James": 147.0,
+        "Daniel": 53.0,
+        "Jordan": -164.5,
+        "Marcus": 82.0,
+        "Nathan": -272.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Sarah"
+    },
+    {
+      "id": 26,
+      "date": "2025-09-06",
+      "results": {
+        "James": -62.0,
+        "Daniel": -200.0,
+        "Jordan": -120.0,
+        "Marcus": 425.0,
+        "Megan": -40.0,
+        "Nathan": 3.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 27,
+      "date": "2025-09-13",
+      "results": {
+        "Ryan": 233.0,
+        "Sarah": 5.0,
+        "Priya": -100.0,
+        "Lucas": -140.0,
+        "James": 470.0,
+        "Daniel": -200.0,
+        "Marcus": -200.0,
+        "Kevin": 164.0,
+        "Nathan": -200.0
+      },
+      "location": "The Den",
+      "notes": "",
+      "king": "James"
+    },
+    {
+      "id": 28,
+      "date": "2025-09-20",
+      "results": {
+        "Derek": 92.0,
+        "Ryan": -360.0,
+        "Lucas": -87.0,
+        "James": 92.0,
+        "Marcus": 129.0,
+        "Megan": -55.0,
+        "Kevin": 189.0
+      },
+      "location": "The Den",
+      "notes": "",
+      "king": "Kevin"
+    },
+    {
+      "id": 29,
+      "date": "2025-09-26",
+      "results": {
+        "Ryan": -280.0,
+        "Priya": 214.0,
+        "Lucas": 21.0,
+        "James": 194.0,
+        "Jordan": -61.5,
+        "Marcus": -167.0,
+        "Megan": 15.0,
+        "Kevin": 68.5,
+        "Lily": -14.0
+      },
+      "location": "The Den",
+      "notes": "",
+      "king": "Priya"
+    },
+    {
+      "id": 30,
+      "date": "2025-10-04",
+      "results": {
+        "Ryan": 345.0,
+        "Priya": -140.0,
+        "Lucas": 96.0,
+        "Jordan": 5.0,
+        "Marcus": -200.0,
+        "Kevin": -32.0,
+        "Lily": -80.0
+      },
+      "location": "The Den",
+      "notes": "",
+      "king": "Ryan"
+    },
+    {
+      "id": 31,
+      "date": "2025-10-05",
+      "results": {
+        "Ryan": -105.0,
+        "Priya": -85.0,
+        "Lucas": -130.0,
+        "James": 163.0,
+        "Daniel": -120.0,
+        "Jordan": 204.5,
+        "Marcus": 26.0,
+        "Megan": -40.0,
+        "Kevin": 86.5,
+        "Lily": 0.0
+      },
+      "location": "The Den",
+      "notes": "",
+      "king": "Jordan"
+    },
+    {
+      "id": 32,
+      "date": "2025-10-09",
+      "results": {
+        "Ryan": -120.0,
+        "Sarah": 104.0,
+        "Lucas": -40.0,
+        "James": 93.0,
+        "Daniel": 105.0,
+        "Jordan": -90.0,
+        "Marcus": 201.0,
+        "Megan": 123.5,
+        "Nathan": -400.0,
+        "Kevin": -52.0,
+        "Lily": 93.0
+      },
+      "location": "The Den",
+      "notes": "",
+      "king": "Marcus"
+    },
+    {
+      "id": 33,
+      "date": "2025-10-10",
+      "results": {
+        "Ryan": 13.5,
+        "Sarah": -39.0,
+        "Lucas": -100.0,
+        "James": -126.5,
+        "Daniel": -80.0,
+        "Jordan": 265.0,
+        "Marcus": 287.0,
+        "Nathan": -100.0,
+        "Lily": -40.0
+      },
+      "location": "Nathan's",
+      "notes": "",
+      "king": ""
+    },
+    {
+      "id": 34,
+      "date": "2025-10-11",
+      "results": {
+        "Ryan": -240.0,
+        "Sarah": 91.0,
+        "Lucas": -40.0,
+        "James": -197.0,
+        "Daniel": -80.0,
+        "Marcus": 233.0,
+        "Nathan": 172.0,
+        "Kevin": 141.0,
+        "Lily": -80.0
+      },
+      "location": "The Den",
+      "notes": "",
+      "king": "Marcus"
+    }
+  ]
+}
