@@ -83,7 +83,7 @@ export function Charts({ games, players }: { games: Game[]; players: PlayerInfo[
             <XAxis dataKey="game" tick={{ fill: axisColor, fontSize: 11 }} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />
             <YAxis tick={{ fill: axisColor, fontSize: 11 }} tickFormatter={v => `$${v}`} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />
             <ReferenceLine y={0} stroke={gridColor} strokeDasharray="3 3" />
-            <Tooltip contentStyle={tt} cursor={{ stroke: gridColor, strokeDasharray: '3 3' }} formatter={(v: number, n: string) => [`$${v}`, n]} />
+            <Tooltip contentStyle={tt} cursor={{ stroke: gridColor, strokeDasharray: '3 3' }} formatter={(v: any, n: any) => [`$${v}`, n]} />
             {activePlayers.filter(p => selectedPlayers.has(p)).map(p => (
               <Line key={p} type="monotone" dataKey={p} stroke={getPlayerColor(p, players)} strokeWidth={3} dot={false} connectNulls strokeOpacity={isDark ? 0.95 : 0.85} />
             ))}
@@ -96,7 +96,7 @@ export function Charts({ games, players }: { games: Game[]; players: PlayerInfo[
           <BarChart data={winRateData} layout="vertical">
             <XAxis type="number" tick={{ fill: axisColor, fontSize: 11 }} tickFormatter={v => `${v}%`} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />
             <YAxis type="category" dataKey="name" tick={{ fill: axisLabelColor, fontSize: 12, fontWeight: 500 }} width={70} axisLine={{ stroke: gridColor }} tickLine={false} />
-            <Tooltip contentStyle={tt} cursor={{ fill: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)', radius: 4 }} formatter={(v: number) => [`${v}%`, 'Win Rate']} />
+            <Tooltip contentStyle={tt} cursor={{ fill: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)', radius: 4 }} formatter={(v: any) => [`${v}%`, 'Win Rate']} />
             <Bar dataKey="winRate" radius={[0, 6, 6, 0]} barSize={20}>
               {winRateData.map((d, i) => <Cell key={i} fill={d.color} fillOpacity={isDark ? 0.9 : 0.8} />)}
             </Bar>
@@ -123,7 +123,7 @@ export function Charts({ games, players }: { games: Game[]; players: PlayerInfo[
             <XAxis dataKey="month" tick={{ fill: axisColor, fontSize: 11 }} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />
             <YAxis tick={{ fill: axisColor, fontSize: 11 }} tickFormatter={v => `$${v}`} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />
             <ReferenceLine y={0} stroke={gridColor} strokeDasharray="3 3" />
-            <Tooltip contentStyle={tt} cursor={{ fill: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)' }} formatter={(v: number, n: string) => [`$${v}`, n]} />
+            <Tooltip contentStyle={tt} cursor={{ fill: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)' }} formatter={(v: any, n: any) => [`$${v}`, n]} />
             {activePlayers.filter(p => selectedPlayers.has(p)).map(p => (
               <Bar key={p} dataKey={p} fill={getPlayerColor(p, players)} fillOpacity={isDark ? 0.9 : 0.8} stackId="a" />
             ))}

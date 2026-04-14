@@ -91,8 +91,8 @@ export function PlayerProfile({
               <YAxis tick={{ fill: axisColor, fontSize: 11 }} tickFormatter={v => `$${v}`} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />
               <ReferenceLine y={0} stroke={gridColor} strokeDasharray="3 3" />
               <Tooltip contentStyle={{ backgroundColor: tooltipBg, border: `1px solid ${tooltipBorder}`, borderRadius: '10px', fontSize: '12px', fontFamily: "'JetBrains Mono', monospace", color: tooltipText }}
-                formatter={(value: number) => [`$${value}`, 'Cumulative']}
-                labelFormatter={(label: string, payload: any[]) => payload?.[0]?.payload?.date ? `${label} - ${payload[0].payload.date}` : label} />
+                formatter={(value: any) => [`$${value}`, 'Cumulative']}
+                labelFormatter={(label: any, payload: any) => payload?.[0]?.payload?.date ? `${label} - ${payload[0].payload.date}` : label} />
               <Line type="monotone" dataKey="cumulative" stroke={color} strokeWidth={2} dot={{ r: 2.5, fill: color }} />
             </LineChart>
           </ResponsiveContainer>

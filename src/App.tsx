@@ -19,7 +19,7 @@ const PLAYERS_KEY = 'poker-tracker-players'
 const PAGE_ORDER: Page['type'][] = ['dashboard', 'leaderboard', 'history', 'charts']
 
 function loadData(): GameData {
-  const base = initialData as GameData
+  const base = initialData as unknown as GameData
   let players = base.players
   try {
     const savedPlayers = localStorage.getItem(PLAYERS_KEY)
@@ -55,7 +55,7 @@ function AppContent() {
 
   useEffect(() => {
     localStorage.setItem(PLAYERS_KEY, JSON.stringify(data.players))
-    const baseIds = new Set((initialData as GameData).games.map(g => g.id))
+    const baseIds = new Set((initialData as unknown as GameData).games.map(g => g.id))
     const extraGames = data.games.filter(g => !baseIds.has(g.id))
     if (extraGames.length > 0) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(extraGames))
