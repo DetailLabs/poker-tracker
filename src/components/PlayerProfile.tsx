@@ -54,23 +54,17 @@ export function PlayerProfile({
         <ArrowLeft size={13} /> Back
       </button>
 
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 rounded-xl flex items-center justify-center text-lg font-bold text-white"
-          style={{ background: `linear-gradient(135deg, ${color}, ${color}88)` }}>
-          {playerName[0]}
-        </div>
-        <div>
-          <h2 className="text-2xl font-extrabold tracking-tighter flex items-center gap-2">
-            {playerName}
-            {stats.kingTitles > 0 && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md"
-                style={{ background: 'var(--gold-bg)', color: 'var(--gold)' }}>
-                <Crown size={10} /> {stats.kingTitles}
-              </span>
-            )}
-          </h2>
-          <p className={`mono text-lg font-bold ${moneyClass(stats.totalWinnings)}`}>{formatMoney(stats.totalWinnings)}</p>
-        </div>
+      <div>
+        <h2 className="text-2xl font-extrabold tracking-tighter flex items-center gap-2">
+          {playerName}
+          {stats.kingTitles > 0 && (
+            <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md"
+              style={{ background: 'var(--gold-bg)', color: 'var(--gold)' }}>
+              <Crown size={10} /> {stats.kingTitles}
+            </span>
+          )}
+        </h2>
+        <p className={`mono text-lg font-bold ${moneyClass(stats.totalWinnings)}`}>{formatMoney(stats.totalWinnings)}</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden" style={{ gap: '1px', background: 'var(--border)' }}>
@@ -85,7 +79,7 @@ export function PlayerProfile({
       <div className="rounded-2xl p-5" style={{ border: '1px solid var(--border)' }}>
         <h3 className="text-[15px] font-semibold tracking-tight mb-4">Cumulative Earnings</h3>
         <div className="h-56">
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer key={`pp-${theme}`} width="100%" height="100%">
             <LineChart data={chartData}>
               <XAxis dataKey="game" tick={{ fill: axisColor, fontSize: 11 }} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />
               <YAxis tick={{ fill: axisColor, fontSize: 11 }} tickFormatter={v => `$${v}`} axisLine={{ stroke: gridColor }} tickLine={{ stroke: gridColor }} />

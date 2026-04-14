@@ -45,7 +45,7 @@ export function Leaderboard({
               <th className="text-left py-3 px-5 label-upper">Player</th>
               {columns.map(col => (
                 <th key={col.key} className="py-3 px-4 text-right">
-                  <button onClick={() => toggleSort(col.key)}
+                  <button onClick={e => { e.stopPropagation(); toggleSort(col.key) }}
                     className={`inline-flex items-center gap-1 cursor-pointer label-upper ${sortKey === col.key ? '!text-[var(--text)]' : ''}`}>
                     {col.label} <ArrowUpDown size={10} />
                   </button>
@@ -55,15 +55,14 @@ export function Leaderboard({
           </thead>
           <tbody>
             {stats.map((s, i) => (
-              <tr key={s.name} className="transition-colors"
+              <tr key={s.name} className="transition-colors cursor-pointer"
+                onClick={() => onNavigate({ type: 'player', name: s.name })}
                 style={{ borderBottom: i < stats.length - 1 ? '1px solid var(--border-subtle)' : undefined }}
                 onMouseEnter={e => (e.currentTarget.style.background = 'var(--hover)')}
                 onMouseLeave={e => (e.currentTarget.style.background = '')}>
                 <td className="py-3 px-5 font-semibold tabular-nums" style={{ color: 'var(--text-muted)' }}>{i + 1}</td>
                 <td className="py-3 px-5">
-                  <button onClick={() => onNavigate({ type: 'player', name: s.name })}
-                    className="font-semibold text-[14px] transition-colors flex items-center gap-2 cursor-pointer"
-                    style={{ color: 'var(--text)' }}>
+                  <span className="font-semibold text-[14px] flex items-center gap-2" style={{ color: 'var(--text)' }}>
                     {s.name}
                     {s.kingTitles > 0 && (
                       <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded-md"
@@ -71,7 +70,7 @@ export function Leaderboard({
                         <Crown size={9} /> {s.kingTitles}
                       </span>
                     )}
-                  </button>
+                  </span>
                 </td>
                 {columns.map(col => (
                   <td key={col.key} className={`py-3 px-4 text-right mono font-medium ${

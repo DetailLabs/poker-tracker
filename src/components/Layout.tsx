@@ -21,10 +21,12 @@ export function Layout({
   page,
   onNavigate,
   children,
+  headerExtra,
 }: {
   page: Page
   onNavigate: (p: Page) => void
   children: React.ReactNode
+  headerExtra?: React.ReactNode
 }) {
   const { theme, toggleTheme } = useTheme()
   const { isAdmin, logout } = useAdmin()
@@ -69,6 +71,7 @@ export function Layout({
           </nav>
 
           <div className="flex items-center gap-1 shrink-0 justify-self-end">
+            {headerExtra}
             <button onClick={toggleTheme} className="p-2 rounded-lg cursor-pointer hover:opacity-70 transition-opacity" style={{ color: 'var(--text-secondary)' }}>
               {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
             </button>

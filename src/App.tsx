@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import type { Page, Game, GameData, PlayerInfo } from './types'
+import { useState, useEffect, useMemo } from 'react'
+import type { Page, Game, GameData, PlayerInfo, DateRange } from './types'
+import { DateRangeFilter } from './components/DateRangeFilter'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { AdminProvider } from './contexts/AdminContext'
 import { Layout } from './components/Layout'
@@ -53,6 +54,19 @@ function AppContent() {
   const [page, setPage] = useState<Page>({ type: 'dashboard' })
   const [data, setData] = useState<GameData>(loadData)
 
+  // Default range = most recent year that has games (Jan 1 → Dec 31)
+  const { years, defaultRange } = useMemo(() => {
+    const ys = Array.from(new Set(data.games.map(g => Number(g.date.slice(0, 4))))).sort((a, b) => a - b)
+    const latest = ys.length > 0 ? ys[ys.length - 1] : new Date().getFullYear()
+    return { years: ys, defaultRange: { from: `${latest}-01-01`, to: `${latest}-12-31` } }
+  }, [data.games])
+  const [dateRange, setDateRange] = useState<DateRange>(defaultRange)
+
+  const filteredGames = useMemo(
+    () => data.games.filter(g => g.date >= dateRange.from && g.date <= dateRange.to),
+    [data.games, dateRange]
+  )
+
   useEffect(() => {
     localStorage.setItem(PLAYERS_KEY, JSON.stringify(data.players))
     const baseIds = new Set((initialData as unknown as GameData).games.map(g => g.id))
@@ -99,20 +113,22 @@ function AppContent() {
     delta: 50,
   })
 
+  const showDateFilter = ['dashboard', 'leaderboard', 'history', 'charts', 'player'].includes(page.type)
+
   function renderPage() {
     switch (page.type) {
       case 'dashboard':
-        return <Dashboard games={data.games} players={data.players} onNavigate={setPage} />
+        return <Dashboard games={filteredGames} players={data.players} onNavigate={setPage} />
       case 'leaderboard':
-        return <Leaderboard games={data.games} players={data.players} onNavigate={setPage} />
+        return <Leaderboard games={filteredGames} players={data.players} onNavigate={setPage} />
       case 'history':
-        return <GameHistory games={data.games} players={data.players} onNavigate={setPage} onDeleteGame={handleDeleteGame} />
+        return <GameHistory games={filteredGames} players={data.players} onNavigate={setPage} onDeleteGame={handleDeleteGame} />
       case 'player':
-        return <PlayerProfile games={data.games} players={data.players} playerName={page.name} onNavigate={setPage} />
+        return <PlayerProfile games={filteredGames} players={data.players} playerName={page.name} onNavigate={setPage} />
       case 'addGame':
         return <AddGame games={data.games} players={data.players} onAddGame={handleAddGame} />
       case 'charts':
-        return <Charts games={data.games} players={data.players} />
+        return <Charts games={filteredGames} players={data.players} />
       case 'managePlayers':
         return <ManagePlayers games={data.games} players={data.players} onUpdatePlayers={handleUpdatePlayers} />
     }
@@ -121,7 +137,11 @@ function AppContent() {
   const pageIdx = PAGE_ORDER.indexOf(page.type)
 
   return (
-    <Layout page={page} onNavigate={setPage}>
+    <Layout
+      page={page}
+      onNavigate={setPage}
+      headerExtra={showDateFilter ? <DateRangeFilter range={dateRange} onChange={setDateRange} years={years} /> : undefined}
+    >
       <div {...swipeHandlers}>
         {renderPage()}
       </div>
