@@ -75,16 +75,27 @@ export function Layout({
 
           <div className="flex items-center gap-1 shrink-0 sm:justify-self-end">
             {headerExtra}
-            <button onClick={toggleTheme} className="p-2 rounded-lg cursor-pointer hover:opacity-70 transition-opacity" style={{ color: 'var(--text-secondary)' }}>
-              {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
-            </button>
             <button
               onClick={() => isAdmin ? logout() : setShowLogin(true)}
               className="p-2 rounded-lg cursor-pointer hover:opacity-70 transition-opacity"
               style={{ color: isAdmin ? 'var(--positive)' : 'var(--text-muted)' }}
               title={isAdmin ? 'Admin mode (click to logout)' : 'Viewer mode (click to login)'}
             >
-              {isAdmin ? <Unlock size={15} /> : <Lock size={15} />}
+              {isAdmin ? <Unlock size={16} /> : <Lock size={16} />}
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="ml-1 flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity"
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: '9999px',
+                background: theme === 'dark' ? '#f5f5f5' : '#0a0a0a',
+                color: theme === 'dark' ? '#0a0a0a' : '#f5f5f5',
+              }}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>
           </div>
         </div>
@@ -117,13 +128,13 @@ export function Layout({
               aria-label={t.label}
               title={t.label}
               style={{
-                width: 44,
-                height: 32,
+                width: 48,
+                height: 36,
                 color: isActive ? 'var(--text)' : 'var(--text-muted)',
                 background: isActive ? 'var(--nav-active)' : 'transparent',
               }}
             >
-              <Icon size={16} />
+              <Icon size={20} />
             </button>
           )
         })}
